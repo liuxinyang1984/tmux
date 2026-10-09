@@ -1,0 +1,4 @@
+plugins/
+.cursor/
+*.zwc
+.DS_Store
