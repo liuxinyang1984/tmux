@@ -37,7 +37,7 @@ git clone git@github.com:liuxinyang1984/tmux.git ~/git/tmux
 ```bash
 ./install.sh --dev            # 配置文件 symlink 到本仓库（改完 tmux source-file 即生效）
 ./install.sh --plugins-only   # 只更新插件
-./install.sh kiosk            # 无 WM 全屏终端+tmux → ~/.local/bin/kiosk-session.sh
+./install.sh kiosk            # 无 WM 全屏 st+tmux → ~/.local/bin/kiosk-session.sh
 ./install.sh --dev kiosk      # kiosk 脚本 symlink 到本仓库
 ./install.sh --help
 ```
@@ -46,13 +46,11 @@ tmux ≥ 3.x 会自动读 `~/.config/tmux/tmux.conf`，不必再写 `~/.tmux.con
 
 已由 [dotfiles](https://github.com/liuxinyang1984/dotfiles) 登记为 `vendor/tmux`：`./install.sh tmux`。
 
-## Kiosk（无 WM + 全屏终端 + tmux）
+## Kiosk（无 WM + 全屏 st + tmux）
 
-给老本 / 单终端会话用：不启 dwm，用 `xdotool` 把终端铺满一块物理屏，里面跑 tmux。
+给老本 / 单终端会话用：不启 dwm，用 `xdotool` 把 `st` 铺满一块物理屏，里面跑 tmux。
 
-默认终端 **kitty**（X11，便于图像协议 / `mpv --vo=kitty`）；没有 kitty 时回退 **st**。可用 `KIOSK_TERM=st` 强制 st。
-
-依赖：`kitty` 或 `st`、`tmux`、`xdotool`，以及 `xrandr` 或 `xdpyinfo`；建议有 `dbus-launch`（Alpine：`dbus-x11`），可选 `fcitx5`。kitty 字体等在 `~/.config/kitty/kitty.conf` 自行配置（例如 `font_family Maple Mono NL NF`）。tmux 内看图/视频建议 `set -g allow-passthrough on`。
+依赖：`st`、`tmux`、`xdotool`，以及 `xrandr` 或 `xdpyinfo`；建议有 `dbus-launch`（Alpine：`dbus-x11`），可选 `fcitx5`。
 
 ```bash
 ./install.sh kiosk
@@ -64,7 +62,7 @@ tmux ≥ 3.x 会自动读 `~/.config/tmux/tmux.conf`，不必再写 `~/.tmux.con
 exec "$HOME/.local/bin/kiosk-session.sh"
 ```
 
-可选环境变量：`KIOSK_OUTPUT`、`KIOSK_GEOM`、`KIOSK_SESSION`、`KIOSK_LOG`、`KIOSK_TERM`（见 `kiosk-session.sh` 头注释）。
+可选环境变量：`KIOSK_OUTPUT`、`KIOSK_GEOM`、`KIOSK_SESSION`、`KIOSK_LOG`（见 `kiosk-session.sh` 头注释）。
 
 ## 键位摘要
 
