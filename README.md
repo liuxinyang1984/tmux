@@ -51,9 +51,11 @@ tmux ≥ 3.x 会自动读 `~/.config/tmux/tmux.conf`，不必再写 `~/.tmux.con
 | Alt+Space | prefix |
 | Alt+Enter / Alt+Shift+Enter | 左右 / 上下分屏 |
 | Alt+h/j/k/l | 切面板 |
-| Alt+H/J/K/L | 调面板大小 |
+| Alt+H/J/K/L（及 M-S-h 等） | 调面板大小 |
 | Alt+Shift+n | 新窗口 |
+| Alt+1..9 | 切到对应窗口（`base-index` 从 1 起） |
 | Alt+, / . | 上/下窗口 |
+| Alt+v | 进入 copy-mode（vi：`v` 选择，`C-v` 矩形，`y` 复制） |
 
 SSH 下 Alt 失效时：先按 prefix，再用 h/j/k/l、`,` / `.`、`N`。
 
