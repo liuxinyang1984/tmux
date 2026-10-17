@@ -76,8 +76,11 @@ exec "$HOME/.local/bin/kiosk-session.sh"
 | Alt+1..9 | 切到对应窗口（`base-index` 从 1 起） |
 | Alt+, / . | 上/下窗口 |
 | Alt+v | 进入 copy-mode（vi：`v` 选择，`C-v` 矩形，`y` 复制） |
+| Alt+q | 关闭当前 pane |
+| Alt+Shift+q | 关闭当前窗口 |
+| Alt+Shift+e | detach（kiosk 下退出 X，tmux 会话保留） |
 
-SSH 下 Alt 失效时：先按 prefix，再用 h/j/k/l、`,` / `.`、`N`。
+SSH 下 Alt 失效时：先按 prefix，再用 h/j/k/l、`,` / `.`、`N`、`q` / `Q` / `E`。
 
 ## 插件
 
