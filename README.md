@@ -50,13 +50,21 @@ tmux ≥ 3.x 会自动读 `~/.config/tmux/tmux.conf`，不必再写 `~/.tmux.con
 
 给老本 / 单终端会话用：不启 dwm，用 `xdotool` 把 `st` 铺满一块物理屏，里面跑 tmux。
 
-依赖：`st`、`tmux`、`xdotool`，以及 `xrandr` 或 `xdpyinfo`；建议有 `dbus-launch`（Alpine：`dbus-x11`），可选 `fcitx5`。
+依赖：`st`、`tmux`、`xdotool`、`xrandr`/`xdpyinfo`、`startx`（`xorg-xinit` + `xorg-server`）；建议有 `dbus-launch`，可选 `fcitx5`。
+
+Arch：
+
+```bash
+sudo pacman -S st tmux xdotool xorg-xrandr xorg-xdpyinfo xorg-server xorg-xinit dbus fcitx5
+```
+
+Alpine：`st` 自编或包；其余如 `tmux xdotool xrandr xdpyinfo xorg-server xinit dbus-x11 fcitx5`。
 
 ```bash
 ./install.sh kiosk
 ```
 
-在 `~/.xinitrc` 里（可与 dwm 分支用参数切换）：
+完整会话切换（`startx` / `startx kiosk` / `startx dwm`）见父仓 [dotfiles `config/x11/`](https://github.com/liuxinyang1984/dotfiles/tree/master/config/x11)。仅 kiosk 时也可：
 
 ```sh
 exec "$HOME/.local/bin/kiosk-session.sh"
