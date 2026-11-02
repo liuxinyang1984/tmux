@@ -35,42 +35,21 @@ git clone git@github.com:liuxinyang1984/tmux.git ~/git/tmux
 2. clone/更新 TPM，并按 conf 里的 `@plugin` 安装插件
 
 ```bash
-./install.sh --dev            # 配置文件 symlink 到本仓库（改完 tmux source-file 即生效）
+./install.sh                  # 默认：配置 symlink 到本仓库
+./install.sh --copy           # 拷贝配置
 ./install.sh --plugins-only   # 只更新插件
-./install.sh kiosk            # 无 WM 全屏 st+tmux → ~/.local/bin/kiosk-session.sh
-./install.sh --dev kiosk      # kiosk 脚本 symlink 到本仓库
 ./install.sh --help
 ```
 
 tmux ≥ 3.x 会自动读 `~/.config/tmux/tmux.conf`，不必再写 `~/.tmux.conf`。
 
-已由 [dotfiles](https://github.com/liuxinyang1984/dotfiles) 登记为 `vendor/tmux`：`./install.sh tmux`。
+已由 [dotfiles](https://github.com/liuxinyang1984/dotfiles) 登记为 `vendor/tmux`：`./install.sh tmux`（**仅 tmux 配置**）。
 
-## Kiosk（无 WM + 全屏 st + tmux）
-
-给老本 / 单终端会话用：不启 dwm，用 `xdotool` 把 `st` 铺满一块物理屏，里面跑 tmux。
-
-依赖：`st`、`tmux`、`xdotool`、`xrandr`/`xdpyinfo`、`startx`（`xorg-xinit` + `xorg-server`）；建议有 `dbus-launch`，可选 `fcitx5`。
-
-Arch：
+无 WM 全屏会话已迁至父仓 [`config/x11/kiosk/`](https://github.com/liuxinyang1984/dotfiles/tree/master/config/x11/kiosk)：
 
 ```bash
-sudo pacman -S st tmux xdotool xorg-xrandr xorg-xdpyinfo xorg-server xorg-xinit dbus fcitx5
+~/git/dotfiles/install.sh desktop:kiosk
 ```
-
-Alpine：`st` 自编或包；其余如 `tmux xdotool xrandr xdpyinfo xorg-server xinit dbus-x11 fcitx5`。
-
-```bash
-./install.sh kiosk
-```
-
-完整会话切换（`startx` / `startx kiosk` / `startx dwm`）见父仓 [dotfiles `config/x11/`](https://github.com/liuxinyang1984/dotfiles/tree/master/config/x11)。仅 kiosk 时也可：
-
-```sh
-exec "$HOME/.local/bin/kiosk-session.sh"
-```
-
-可选环境变量：`KIOSK_OUTPUT`、`KIOSK_GEOM`、`KIOSK_SESSION`、`KIOSK_LOG`（见 `kiosk-session.sh` 头注释）。
 
 ## 键位摘要
 
